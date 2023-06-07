@@ -123,7 +123,7 @@ const styles = {
     modalContainer:{
         width:'50vw',
         flex: 1,
-        height:'80vh',
+        height:'60vh',
         display: 'block',
         justifyContent: 'center',
         alignItems: 'center',

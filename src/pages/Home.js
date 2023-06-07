@@ -12,6 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Checkbox from '@material-ui/core/Checkbox';
 import AddForm from '../components/AddForm';
 import UpdateTodoForm from '../components/UpdateTodoForm';
+import ViewTodo from '../components/ViewTodo';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -24,7 +25,9 @@ const useStyles = makeStyles((theme) => {
             marginTop: 10,
         },
         root: {
-            display: 'flex',
+            display: 'block',
+            background: 'url(/background1.jpg) no-repeat center center fixed',
+            backgroundSize: 'cover',
         },
         appbar: {
             //width: `calc(100% - ${drawerWidth}px)`,
@@ -55,6 +58,7 @@ const useStyles = makeStyles((theme) => {
 const Home = () => {
     const [todos,setTodos] = useState([]);
     const [updateTodo,setUpdateTodo] = useState([]);
+    const [viewTodo,setViewTodo] = useState([]);
     const [open, setOpen] = useState(false);
     const classes = useStyles();
     const handleOpen = () => setOpen(true);
@@ -66,6 +70,14 @@ const Home = () => {
     const handleOpen1 = (todo) => {
         setUpdateTodo(todo)
         setOpen1(true);
+    }
+
+    const [open2, setOpen2] = useState(false);
+    const handleClose2 = () => setOpen2(false);
+
+    const handleOpen2 = (todo) => {
+        setViewTodo(todo)
+        setOpen2(true);
     }
 
     //----------------------------------------------------Function to fecth the to-do list--------------------------------------------------------------
@@ -122,7 +134,7 @@ const Home = () => {
             completed: !todo.completed,
             created: todo.created,
             lastUpdated: new Date().toISOString(),
-            scheduledfor:todo.selectedDate,
+            scheduledfor:todo.scheduledfor,
         }
         console.log(todo);
         try
@@ -166,7 +178,7 @@ const Home = () => {
             <Avatar src="/logo.png" className={classes.avatar}/>
                 <Typography
                     className={classes.titleDate}>
-                    HISP Tz To-do list { /*format(new Date(), 'do MMMM Y') */}
+                    HISP Tz To-do list app { /*format(new Date(), 'do MMMM Y') */}
                 </Typography>
 
             </Toolbar>
@@ -175,7 +187,9 @@ const Home = () => {
         <div style={styles.mainContainer}>
 
             <div style={styles.bodyContainer}>
+
             <p style={styles.headerTxt}>Welcome! <br/> Below are your Todo lists</p>
+            <p style={styles.instructionTxt}>Click on the todo list title to view it's descriptions</p>
 
             <div style={styles.createContainer}>
                <div style={styles.addHeaderStyle}><p>What do you have planned?</p></div>
@@ -189,6 +203,7 @@ const Home = () => {
             </Button>
             <AddForm open={open} handleClose={handleClose} fetchTodoList={fetchTodoList}/>
             <UpdateTodoForm open={open1} handleClose={handleClose1} fetchTodoList={fetchTodoList} todo={updateTodo}/>
+            <ViewTodo open={open2} handleClose={handleClose2} todo={viewTodo}/>
             </div>
 
 
@@ -205,8 +220,10 @@ const Home = () => {
                     </div>
 
                     <div style={styles.todoSubContainer2}> 
-                        <h2 style={styles.header2Txt}>{todo.title}</h2> 
+                    <button style={styles.viewTodoBtnStyle} onClick={() => handleOpen2(todo)}>
+                        <h2 style={styles.header2Txt}>{todo.title} </h2> 
                         <p style={styles.regularTxt}>Scheduled for: {todo.scheduledfor}</p>
+                    </button>
                      </div>
 
                     <div style={styles.todoSubContainer3}>
@@ -224,6 +241,7 @@ const Home = () => {
 
         </div>
 
+
         </div>
      );
 }
@@ -238,7 +256,9 @@ const styles = {
         alignItems:'center',
         background: 'url(/background1.jpg) no-repeat center center fixed',
         backgroundSize: 'cover',
-        backgroundAttachment: 'scroll',
+        //backgroundAttachment: 'scroll',
+        marginBottom:20,
+        //marginTop:'10vh',
     },
     bodyContainer:{
         width:'50vw',
@@ -249,9 +269,10 @@ const styles = {
         alignItems: 'center',
         backgroundColor:'rgba(0,0,0,0.5)',
         borderRadius:10,
-        marginTop:'10vh',
+        marginTop:'8vh',
         marginLeft:'25vw',
         paddingBottom:20,
+        //marginBottom:'0vh',
     },
     createContainer:{
         //backgroundColor:'cyan',
@@ -310,6 +331,13 @@ const styles = {
         color:'white',
         paddingTop:15,
     },
+    instructionTxt:{
+        fontFamily:'Montserrat',
+        fontSize:20,
+        paddingLeft:15,
+        color:'white',
+        paddingTop:0,
+    },
     header2Txt:{
         fontFamily:'Montserrat',
         fontSize:20,
@@ -343,5 +371,13 @@ const styles = {
         fontFamily:'Montserrat',
         justifyContent:'center',
         alignItems:'center',
+    },
+    viewTodoBtnStyle:{
+        width:'100%',
+        height:'100%',
+        justifyContent:'center',
+        backgroundColor:'rgba(0,0,0,0)',
+        border:0,
+        textAlign:'left'
     },
 }
