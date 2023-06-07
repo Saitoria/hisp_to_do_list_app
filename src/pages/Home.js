@@ -25,9 +25,11 @@ const useStyles = makeStyles((theme) => {
             marginTop: 10,
         },
         root: {
-            display: 'block',
-            background: 'url(/background1.jpg) no-repeat center center fixed',
+            display: 'flex',
+            background: 'url(/background3.png) no-repeat center center fixed',
             backgroundSize: 'cover',
+           // backgroundColor: 'red',
+            height:2200,
         },
         appbar: {
             //width: `calc(100% - ${drawerWidth}px)`,
@@ -168,7 +170,7 @@ const Home = () => {
       }, []);
 
     return ( 
-        <div className={classes.root}>
+        <div className={classes.root} > {/*className={classes.root} style={{backgroundColor:'green',height:20,flex:1,display:'block'}}*/}
         {/*App bar*/}
         <AppBar
         className={classes.appbar}
@@ -256,6 +258,7 @@ const styles = {
         alignItems:'center',
         background: 'url(/background1.jpg) no-repeat center center fixed',
         backgroundSize: 'cover',
+        //backgroundColor:'red',
         //backgroundAttachment: 'scroll',
         marginBottom:20,
         //marginTop:'10vh',

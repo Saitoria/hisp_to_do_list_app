@@ -34,7 +34,7 @@ const ViewTodo = (props) => {
                 </Typography>
 
                 <div style={{width:'100%',paddingLeft:15,marginTop:40}}>
-                  <button style={styles.btnStyle}>CLOSE</button>
+                  <button style={styles.btnStyle} onClick={props.handleClose}>CLOSE</button>
                 </div>
     
     
