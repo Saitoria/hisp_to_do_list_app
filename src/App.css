@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+@font-face {
+  font-family: "Montserrat";   /*Can be any text*/
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Italic";   /*Can be any text*/
+  src: url("./fonts/Montserrat-Italic.ttf") format("truetype");
+}
