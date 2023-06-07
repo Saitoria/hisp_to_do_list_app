@@ -51,7 +51,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 #hisp_to_do_list_app
 
 ### Todo App images
-!['home_page']('./appimages/1.png')
-!['view_todo']('./appimages/2.png')
-!['add_todo']('./appimages/3.png')
-!['update_todo']('./appimages/4.png')
+!['home_page'](appimages/1.png)
+!['view_todo'](appimages/2.png)
+!['add_todo'](appimages/3.png)
+!['update_todo'](appimages/4.png)
